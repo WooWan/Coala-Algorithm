@@ -27,6 +27,7 @@ int main() {
 void turn(int index, int direction, int call) {
 	string temp = t[index];
 	if (direction == 1) t[index] = temp[7] + temp.substr(0, 7);
+
 	else t[index] = temp.substr(1, 7) + temp[0];
 	if (index - 1 >= 0 && index - 1 != call && temp[6] != t[index - 1][2]) turn(index - 1, direction * -1, index);
 	if (index + 1 <= 3 && index + 1 != call && temp[2] != t[index + 1][6]) turn(index + 1, direction * -1, index);
