@@ -1,3 +1,5 @@
+# 아직 작성중,,,
+
 def wheel_rotate(wheel_idx, direction):
     temp = 0
     if direction == 1:
@@ -14,7 +16,7 @@ def wheel_rotate(wheel_idx, direction):
 def rotate_check(wheel_idx,direction): // 코드 작성중
     if wheel_idx == 1:
         if wheel[wheel_idx -1][2] != wheel[wheel_idx][6]: # 1번톱니바퀴 2번 톱니바퀴 만나는 부분이 같지 않아야 rotate
-            wheel
+            wheel # rotate def call
     elif wheel_idx == 2 or 3:
     else:
 
