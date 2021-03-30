@@ -1,0 +1,45 @@
+package ConsultRoom;
+import java.util.*;
+public class Counsultroom {
+	static int N;
+	static int countRow=1;
+	static int countHeight=1;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int tc = sc.nextInt();
+		int[][] ls = new int[4][13];
+		
+
+		
+		for(int i = 0; i<tc; i++) {
+			int start = sc.nextInt();
+			int end = sc.nextInt();
+			int cp = 0;
+			
+			start = start -2;
+			end = end -2;
+			
+			for(int j = start; j<=end; j++ ) {
+				ls[0][j] = 1;
+				
+				
+			}
+			
+		}
+		for(int i=0;i<12;i++) {
+			for(int j=0;j<3;j++) {
+				if(ls[j][i] * ls[j][i+1] == 1) {
+					countHeight ++;
+				}
+				else if(ls[j][i] * ls[j+1][i] == 1)
+					countRow ++;
+			}
+		}
+		System.out.println(countHeight * countRow);
+		
+	}
+
+
+}
