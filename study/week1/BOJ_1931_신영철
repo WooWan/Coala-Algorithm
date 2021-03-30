@@ -22,7 +22,7 @@ public class Counsultroom {
 			end = end -2;
 			
 			for(int j = start; j<=end; j++ ) {
-				ls[0][j] = 1;
+				ls[][j] = 1;
 				
 				
 			}
