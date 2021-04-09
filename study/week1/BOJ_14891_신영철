@@ -1,0 +1,99 @@
+package Wheel;
+import java.util.*;
+
+import java.io.*;
+public class Wheel {
+	
+	static int [][] wheel = new int[4][8];
+	static int [] vector;
+	
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringBuilder sb = new StringBuilder();
+		
+		
+		
+		for(int i = 0; i<4; i++) {
+			
+			String[] input = br.readLine().split("");
+			
+			for(int j=0;j<8;j++) {
+				wheel[i][j] = Integer.parseInt(input[j]);
+			}
+			
+		}
+		
+		int K = Integer.parseInt(br.readLine());
+		
+		for(int i=0; i<K; i++) {
+			String[] input = br.readLine().split(" ");
+			vector = new int[4];
+			
+			int wheelN = Integer.parseInt(input[0])-1;
+			int V = Integer.parseInt(input[1]);
+			
+			check(wheelN, V);
+			rotate(vector);
+			
+		}
+		System.out.println();
+		
+		
+	}
+	
+	static int cal() {
+		int sum = 0;
+		for(int i = 0; i<4;i++) {
+			int num = wheel[i][0];
+			
+			if(num == 1) {
+				sum += Math.pow(2, i);
+				
+			}
+		}
+		return sum;
+	}
+	static void check(int wheelN,int V) {
+		vector[wheelN] = V;
+		int prev = wheelN -1;
+		int next = wheelN +1;
+		
+		if(prev>=0 && vector[prev] ==0) {
+			if(wheel[prev][2] != wheel[wheelN][6]) {
+				check(prev, V * -1);
+			}
+		}
+
+        if (next <= 3 && vector[next] == 0) {
+            //오른쪽 바퀴 검사
+            if (wheel[next][6] != wheel[wheelN][2]) {
+                check(next, V * -1);
+            }
+	}
+}
+    static void rotate(int[] vector) {
+        for (int i = 0; i < 4; i++) {
+            if (vector[i] != 0) {
+                int[] temp = new int[8];
+
+                int idx;
+                for (int j = 0; j < 8; j++) {
+                    idx = j + vector[i];
+
+                    if (idx == -1) {
+                        idx = 7;
+                    } else if (idx == 8) {
+                        idx = 0;
+                    }
+
+                    temp[idx] = wheel[i][j];
+                }
+
+                wheel[i] = temp;
+            }
+        }
+
+ }
+}
