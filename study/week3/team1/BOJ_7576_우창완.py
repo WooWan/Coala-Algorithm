@@ -6,9 +6,9 @@ ground=list()
 
 for i in range(n):
     ground.append(list(map(int, sys.stdin.readline().split())))
-queue=deque()
 
 def bfs():
+    cnt=0
     while queue:
         x, y, cnt = queue.popleft()
         for dx, dy in (1,0), (-1,0), (0,1), (0,-1):
@@ -19,7 +19,7 @@ def bfs():
                     ground[nx][ny]=1
                     queue.append((nx,ny, cnt+1))
     return cnt
-
+queue=deque()
 for i in range(n):
     for j in range(m):
         if ground[i][j]==1:
